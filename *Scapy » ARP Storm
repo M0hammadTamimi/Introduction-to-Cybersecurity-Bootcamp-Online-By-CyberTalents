@@ -1,0 +1,38 @@
+Description
+An attacker in the network is trying to poison the arp table of 11.0.0.100, the admin captured this PCAP.
+
+ Link:https://hubchallenges.s3-eu-west-1.amazonaws.com/Forensics/ARP+Storm.pcap
+
+solution :
+After install the pcap file we will open with wireshak 
+we will see  many info is the same but the opcode is changing and we can see this 
+
+So we will take the row of Opcode and extracted the info inside >>>>
+
+% tshark -r ARP+Storm.pcap
+    1   0.000000 00:0c:29:1e:1d:81 → ff:ff:ff:ff:ff:ff ARP 42 Unknown ARP opcode 0x005a
+    2   0.000442 00:0c:29:1e:1d:81 → ff:ff:ff:ff:ff:ff ARP 42 Unknown ARP opcode 0x006d
+    3   0.000745 00:0c:29:1e:1d:81 → ff:ff:ff:ff:ff:ff ARP 42 Unknown ARP opcode 0x0078
+    4   0.000994 00:0c:29:1e:1d:81 → ff:ff:ff:ff:ff:ff ARP 42 Unknown ARP opcode 0x0068
+    5   0.001290 00:0c:29:1e:1d:81 → ff:ff:ff:ff:ff:ff ARP 42 Unknown ARP opcode 0x005a
+    ...
+   64   0.019096 00:0c:29:1e:1d:81 → ff:ff:ff:ff:ff:ff ARP 42 Unknown ARP opcode 0x0077
+   65   0.019337 00:0c:29:1e:1d:81 → ff:ff:ff:ff:ff:ff ARP 42 Unknown ARP opcode 0x0062
+   66   0.019617 00:0c:29:1e:1d:81 → ff:ff:ff:ff:ff:ff ARP 42 Unknown ARP opcode 0x006e
+   67   0.019858 00:0c:29:1e:1d:81 → ff:ff:ff:ff:ff:ff ARP 42 Unknown ARP opcode 0x0030
+   68   0.020136 00:0c:29:1e:1d:81 → ff:ff:ff:ff:ff:ff ARP 42 Unknown ARP opcode 0x003d
+
+we can use any way to extract the opcode  
+like this command i found it in google >>>    tshark -r ARP+Storm.pcap -Tfields -e arp.opcode | awk '{printf("%c",$1)}'
+or idont know how the command was written but imade empty file and i extract the opcode manuealy i accept this 
+
+5a 6d 78 68 5a 33 74 6e 63 6b 42 30 64 57 6c 30 4d 48 56 7a 58 7a 42 77 59 30 39 6b 5a 56 38 78 63 31 39 42 62 48 64 41 65 58 4e 66 51 54 5a 31 55 32 56 6b 58 33 51 77 58 33 41 77 4d 58 4d 77 62 6e 30 3d
+itake it to this website >> >  https://gchq.github.io
+
+and convert forme Hexa format to  This      
+
+ >>>> ZmxhZ3tnckB0dWl0MHVzXzBwY09kZV8xc19BbHdAeXNfQTZ1U2VkX3QwX3AwMXMwbn0   >>>Convert fome Base 64 
+to the 
+flag >>flag{gr@tuit0us_0pcOde_1s_Alw@ys_A6uSed_t0_p01s0n}
+
+
