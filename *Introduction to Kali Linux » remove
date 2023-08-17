@@ -1,0 +1,8 @@
+Description
+I need to remove a file called secret in my home directory. which command should i use 
+
+
+
+solution :
+
+rm ~/secret
