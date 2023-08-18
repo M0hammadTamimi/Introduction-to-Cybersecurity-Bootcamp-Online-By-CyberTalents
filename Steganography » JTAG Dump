@@ -1,0 +1,14 @@
+Description
+this is a JTAG mobile Extraction for a handset in a criminal case. Catch the Flag
+
+
+
+solution:
+
+after install this   tag-dump.bin  
+
+use this command >>>>    binwalk Jtag-dump.bin  --dd=".*" 
+serch in images and the flag is 
+
+Flag : Flag{Remember_header_then_footer}
+
