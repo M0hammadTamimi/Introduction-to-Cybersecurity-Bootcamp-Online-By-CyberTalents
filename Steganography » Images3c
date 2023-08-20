@@ -1,0 +1,69 @@
+Description
+Securing an important image requires good encryption. so we added extra security layer for your photo and now is unbreakable! 
+
+ Link:https://hubchallenges.s3-eu-west-1.amazonaws.com/Forensics/cyber.zip
+
+
+Solution :
+flag{cyb3rs3cisaw3s0me}
+
+Explain>
+after download the zip file 
+
+(kali㉿kali)-[~/Desktop]
+└─$ ls -al 
+total 212
+drwxr-xr-x  2 kali kali   4096 Aug 20 05:19 .
+drwx------ 19 kali kali   4096 Aug 20 05:19 ..
+-rw-r--r--  1 kali kali 203941 Aug 20 05:18 cyber.zip
+-rw-r--r--  1 kali kali   4096 Aug 18 08:28 Jtag-dump.bin
+                                                                                                 
+┌──(kali㉿kali)-[~/Desktop]
+└─$ 7z x cyber.zip    
+
+7-Zip [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
+p7zip Version 16.02 (locale=en_US.UTF-8,Utf16=on,HugeFiles=on,64 bits,6 CPUs Intel(R) Core(TM) i7-10750H CPU @ 2.60GHz (A0652),ASM,AES-NI)
+
+Scanning the drive for archives:
+1 file, 203941 bytes (200 KiB)
+
+Extracting archive: cyber.zip
+--
+Path = cyber.zip
+Type = zip
+Physical Size = 203941
+
+Everything is Ok
+
+Size:       216908
+Compressed: 203941
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Nothing interesting there. Speaking of encryption, does it have like data hidden in the imagefile?
+I finally get to showcase the beast of steganography tools, please welcome stegseek lmao!
+This tool literally goes through the entire rockyou wordlist in less than 2 seconds. I have much respect.
+
+kali㉿kali)-[~/Desktop]
+└─$ stegseek cyber.jpg /usr/share/wordlists/rockyou.txt -xf
+[!] error: the argument "-xf" requires a value
+stegseek: type "stegseek --help" for help.
+                                                                                                 
+┌──(kali㉿kali)-[~/Desktop]
+└─$ stegseek cyber.jpg /home/kali/Desktop/rockyou.txt 
+StegSeek 0.6 - https://github.com/RickdeJager/StegSeek
+
+[i] Found passphrase: "1234"
+[i] Original filename: "flag.txt".
+[i] Extracting to "cyber.jpg.out".
+
+                                                                                                 
+┌──(kali㉿kali)-[~/Desktop]
+└─$ cat cyber.jpg.out 
+flag{cyb3rs3cisaw3s0me}
+
+
+
+
+
+
+
+
