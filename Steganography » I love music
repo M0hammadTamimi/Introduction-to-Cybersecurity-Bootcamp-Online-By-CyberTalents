@@ -1,0 +1,23 @@
+Description
+listen and focus , you will listen another thing
+
+Flag format : XXX_XXX_XXXXXXXXXXX
+
+ Link:https://s3-eu-west-1.amazonaws.com/hubchallenges/Forensics/love-music.wav
+
+
+Solution :
+1)after downlad this link we can see this file 
+" love-music.wav " as a audio 
+2)I tried open but the sound is very bad whitout any info
+3)so we shoud use this tool to anlays this Audio file 
+4)https://www.audacityteam.org/download/linux/
+5)after download the tool use this command >>>>>>>>>>>>>>>>>>>
+
+(kali㉿kali)-[~/Desktop]
+└─$ audacity love-music.wav
+after open press this >>>>>>>>> shift + M
+then press Spectrogram then you will see this flag 
+  FLAG=     you_are_victorious!
+  
+            XXX_XXX_XXXXXXXXXXX
